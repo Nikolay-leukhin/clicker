@@ -23,7 +23,7 @@ List<Widget?> pages = [
 
 
 class _HomePageState extends State<HomePage> {
-  int selectedIndex = 0;
+  int selectedIndex = 1;
 
   void _onTap(int index){
     setState(() {

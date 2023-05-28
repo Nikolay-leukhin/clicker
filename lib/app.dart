@@ -26,9 +26,7 @@ class _AppState extends State<App> with WidgetsBindingObserver {
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) async{
-    if (state == AppLifecycleState.paused) {
       await context.read<UserRepository>().saveData();
-    }
   }
 
 

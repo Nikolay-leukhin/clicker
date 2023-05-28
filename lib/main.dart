@@ -25,9 +25,9 @@ void main() async {
         create: (context) => BlessBloc(_userRepository),
         lazy: false,
       ),
-      BlocProvider(create: (context) => BuyBloc(_userRepository)),
+      BlocProvider(create: (context) => BuyBloc(_userRepository), lazy: false,),
       BlocProvider(
-        create: (context) => ProfileBloc(userRepository: _userRepository, iqBloc: context.read<IqBloc>(), blessBloc: context.read<BlessBloc>()),
+        create: (context) => ProfileBloc(userRepository: _userRepository, iqBloc: context.read<IqBloc>(), blessBloc: context.read<BlessBloc>(), buyBloc: context.read<BuyBloc>()),
         lazy: false,
       ),
     ], child: App()),

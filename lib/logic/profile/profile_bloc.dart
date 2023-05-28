@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:async/async.dart' show StreamGroup;
 import 'package:bloc/bloc.dart';
+import 'package:clicker/logic/buy/buy_bloc.dart';
 import 'package:meta/meta.dart';
 
 import '../../data/repository/user_repository.dart';
@@ -14,12 +15,13 @@ part 'profile_state.dart';
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   final IqBloc iqBloc;
   final BlessBloc blessBloc;
+  final BuyBloc buyBloc;
   final UserRepository userRepository;
 
   late var blocsStreams;
 
-  ProfileBloc({required this.iqBloc, required this.blessBloc, required this.userRepository}) : super(ProfileInitial()) {
-    blocsStreams = StreamGroup.merge([iqBloc.stream, blessBloc.stream]);
+  ProfileBloc({required this.iqBloc, required this.blessBloc, required this.userRepository, required this.buyBloc}) : super(ProfileInitial()) {
+    blocsStreams = StreamGroup.merge([iqBloc.stream, blessBloc.stream, buyBloc.stream]);
     _subscription();
     on<ProfileEvent>((event, emit) {});
   }
@@ -28,6 +30,9 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     blocsStreams.listen((event) {
       if (event is IqScoreIncreased || event is BlessScoreIncreased) {
         userRepository.updateUserLevel(userRepository.iq, userRepository.respectScore, userRepository.successScore, userRepository.respectIncrementSetter);
+      }
+      if (event is BuySuccess){
+        userRepository.updateUserSuccess(userRepository.iq, userRepository.respectScore);
       }
     });
   }

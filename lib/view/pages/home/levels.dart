@@ -7,7 +7,7 @@ Map<String, String> levels = {
   'гуманоид': 'assets/guma.png',
   'герой земли': 'assets/hero.png',
   'профессор': 'assets/prof.png',
-  'падж': 'assets/prof.png'
+  'падж': 'assets/pudge.jpg'
 };
 
 class LevelsPage extends StatefulWidget {

@@ -6,9 +6,9 @@ class UserRepository extends AbstractUserRepository{
 
   UserRepository(this.prefs);
 
-  late int iq = prefs.getInt("iq") ?? 1;
-  late int respectScore = prefs.getInt("respect") ?? 1;
-  late double successScore = prefs.getDouble("success") ?? 1.0;
+  late int iq = prefs.getInt("iq") ?? 0;
+  late int respectScore = prefs.getInt("respect") ?? 0;
+  late double successScore = prefs.getDouble("success") ?? 0;
   late int iqIncrementSetter = prefs.getInt("iqSetter") ?? 1;
   late int respectIncrementSetter = prefs.getInt("respectSetter") ?? 1;
   late String level = prefs.getString("level") ?? 'котенок';
@@ -55,12 +55,17 @@ class UserRepository extends AbstractUserRepository{
 
   @override
   void updateUserSuccess(int curIq, int curRespect) {
-    this.successScore = ((curRespect / curIq)).round() / 10;
+    if (curIq != 0 && curRespect != 0){
+      this.successScore = (((curRespect / (curIq))).round() / 10) % 100;
+    }else{
+      this.successScore = 0;
+    }
+
   }
 
   @override
   void updateUserLevel(int iq, int respect, double success, int respectIncrementSetter) {
-    if (success > 75 && (respectIncrementSetter > 1500)){
+    if (success > 75 && (respectIncrementSetter > 15)){
       level = 'амогус';
     }else if  (success >= 50){
       level = 'герой земли';
@@ -68,7 +73,7 @@ class UserRepository extends AbstractUserRepository{
       level = 'профессор';
     }else if (respect / iq > 100){
       level = 'гуманоид';
-    }else if ((respect == iq) && (iq > 10000)){
+    }else if ((respect == iq) && (iq > 11)){
       level = 'падж';
     }else{
       level = 'котенок';
