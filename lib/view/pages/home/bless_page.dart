@@ -60,8 +60,8 @@ class _BlessPageState extends State<BlessPage> {
                 },
                 child: Container(
                   alignment: Alignment.center,
-                  width: MediaQuery.of(context).size.width * 0.86,
-                  height: MediaQuery.of(context).size.height * 0.44,
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  height: MediaQuery.of(context).size.height * 0.4,
                   child: AnimatedContainer(
                     onEnd: () {
                       setState(() {
@@ -71,10 +71,11 @@ class _BlessPageState extends State<BlessPage> {
                       });
                     },
                     duration: Duration(milliseconds: 90),
-                    width: _toogle ? MediaQuery.of(context).size.width * 0.8 : MediaQuery.of(context).size.width * 0.86,
-                    height: _toogle ? MediaQuery.of(context).size.height * 0.4 : MediaQuery.of(context).size.height * 0.44,
+                    width: _toogle ? MediaQuery.of(context).size.width * 0.75 : MediaQuery.of(context).size.width * 0.8,
+                    height: _toogle ? MediaQuery.of(context).size.height * 0.36 : MediaQuery.of(context).size.height * 0.4,
                     decoration: BoxDecoration(
                       image: DecorationImage(
+
                         fit: BoxFit.contain,
                         image: AssetImage("assets/knees.png"),
                       ),

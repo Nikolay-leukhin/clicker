@@ -1,4 +1,3 @@
-import 'package:clicker/main.dart';
 import 'package:clicker/view/pages/home/shop_item.dart';
 import 'package:clicker/view/utils/colors.dart';
 import 'package:flutter/material.dart';
@@ -86,7 +85,8 @@ class _ShopItemDescriptionState extends State<ShopItemDescription> {
           );
         },
       ),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: FloatingActionButton.large(
+
         backgroundColor: AppColors.yellow,
         onPressed: () {
           context.read<BuyBloc>().add(BuyButtonPressed(widget.item));
