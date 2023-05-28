@@ -33,11 +33,17 @@ class _ProfilePageState extends State<ProfilePage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text("level ${context.read<UserRepository>().level.toUpperCase()}", style: Theme.of(context).textTheme.headlineMedium),
-            Image(
-              image: AssetImage(levels[context.read<UserRepository>().level] ?? 'assets/pudge.jpg'),
-              width: MediaQuery.of(context).size.width * 0.5,
-              height: MediaQuery.of(context).size.width * 0.5,
-              fit: BoxFit.contain,
+            Container(
+              constraints: BoxConstraints(
+                maxWidth: 300,
+                maxHeight: 300
+              ),
+              child: Image(
+                image: AssetImage(levels[context.read<UserRepository>().level] ?? 'assets/pudge.jpg'),
+                width: MediaQuery.of(context).size.width * 0.5,
+                height: MediaQuery.of(context).size.width * 0.5,
+                fit: BoxFit.contain,
+              ),
             ),
             const SizedBox(height: 30),
             Container(
