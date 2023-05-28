@@ -47,7 +47,7 @@ class _IqPageState extends State<IqPage> {
               SizedBox(
                 height:15,
               ),
-              Text("+IQ/click : ${context.read<UserRepository>().respectIncrementSetter.toString()}", style: Theme.of(context).textTheme.headlineMedium,),
+              Text("+IQ/click : ${context.read<UserRepository>().iqIncrementSetter.toString()}", style: Theme.of(context).textTheme.headlineMedium,),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.05,
               ),
