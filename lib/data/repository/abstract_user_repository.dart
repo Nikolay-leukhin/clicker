@@ -1,10 +1,5 @@
 abstract class AbstractUserRepository{
-  int iq = 1;
-  int respectScore = 1;
-  double successScore = 1.0;
-  int iqIncrementSetter = 1;
-  int respectIncrementSetter = 1;
-
+  Future saveData();
   void increaseIq();
   void increaseRespect();
   void updateIqSetter(int newIqSetter);
@@ -12,4 +7,5 @@ abstract class AbstractUserRepository{
   void chargeIq(int price);
   void chargeRespect(int price);
   void updateUserSuccess(int iq, int respect);
+  void updateUserLevel(int iq, int respect, double success, int respectIncrementSetter);
 }

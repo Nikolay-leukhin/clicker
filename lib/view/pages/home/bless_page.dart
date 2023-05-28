@@ -19,7 +19,6 @@ class _BlessPageState extends State<BlessPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("blessing")),
       body: Container(
         width: double.infinity,
         decoration: const BoxDecoration(
@@ -46,7 +45,11 @@ class _BlessPageState extends State<BlessPage> {
               ),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.1,
+              height:15,
+            ),
+            Text("+IQ/click : ${context.read<UserRepository>().respectIncrementSetter.toString()}", style: Theme.of(context).textTheme.headlineMedium,),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.05,
             ),
             GestureDetector(
                 onTap: () {

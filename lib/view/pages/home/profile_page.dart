@@ -3,6 +3,8 @@ import 'package:clicker/view/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'levels.dart';
+
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
 
@@ -15,12 +17,12 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("PROFILE"),
+        title: const Text("PROFILE"),
       ),
       body: Container(
         alignment: Alignment.center,
-        padding: EdgeInsets.symmetric(vertical:15, horizontal: 10),
-        decoration: BoxDecoration(
+        padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/backblue.png"),
             fit: BoxFit.cover,
@@ -28,23 +30,20 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
-            width: 100,
-            height:100,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(50)),
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: AssetImage('assets/pudge.jpg')
-                )
-              ),
+            Text("level ${context.read<UserRepository>().level.toUpperCase()}", style: Theme.of(context).textTheme.headlineMedium),
+            Image(
+              image: AssetImage(levels[context.read<UserRepository>().level] ?? 'assets/pudge.jpg'),
+              width: MediaQuery.of(context).size.width * 0.5,
+              height: MediaQuery.of(context).size.width * 0.5,
+              fit: BoxFit.contain,
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             Container(
               padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: AppColors.blue,
+                color: AppColors.yellow,
                 borderRadius: BorderRadius.all(Radius.circular(10)),
               ),
               child: Column(
@@ -73,7 +72,9 @@ class _ProfilePageState extends State<ProfilePage> {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton.small(onPressed: () {
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => LevelsPage()));
+      }, child: Icon(Icons.question_mark),),
     );
   }
 }
-

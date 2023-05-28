@@ -4,4 +4,4 @@ part of 'bless_bloc.dart';
 abstract class BlessState {}
 
 class BlessInitial extends BlessState {}
-class ScoreIncreased extends BlessInitial {}
+class BlessScoreIncreased extends BlessInitial {}

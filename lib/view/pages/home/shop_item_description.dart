@@ -107,14 +107,22 @@ class ShopItemDescriptionAttribute extends StatefulWidget {
   final Color color;
   final IconData? icon;
 
-  const ShopItemDescriptionAttribute({Key? key, required this.width, required this.title, required this.subtitle, required this.color, this.icon})
-      : super(key: key);
+  const ShopItemDescriptionAttribute({
+    Key? key,
+    required this.width,
+    required this.title,
+    required this.subtitle,
+    required this.color,
+    this.icon,
+  }) : super(key: key);
 
   @override
-  State<ShopItemDescriptionAttribute> createState() => _ShopItemDescriptionAttributeState();
+  State<ShopItemDescriptionAttribute> createState() =>
+      _ShopItemDescriptionAttributeState();
 }
 
-class _ShopItemDescriptionAttributeState extends State<ShopItemDescriptionAttribute> {
+class _ShopItemDescriptionAttributeState
+    extends State<ShopItemDescriptionAttribute> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -122,7 +130,10 @@ class _ShopItemDescriptionAttributeState extends State<ShopItemDescriptionAttrib
       constraints: BoxConstraints(minHeight: 100),
       width: widget.width,
       padding: EdgeInsets.all(10),
-      decoration: BoxDecoration(color: widget.color.withOpacity(0.9), borderRadius: BorderRadius.all(Radius.circular(10))),
+      decoration: BoxDecoration(
+        color: widget.color.withOpacity(0.9),
+        borderRadius: BorderRadius.all(Radius.circular(10)),
+      ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -136,18 +147,26 @@ class _ShopItemDescriptionAttributeState extends State<ShopItemDescriptionAttrib
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(
-                widget.subtitle,
-                style: Theme.of(context).textTheme.bodySmall,
-                textAlign: TextAlign.end,
+              Expanded(
+                child: Wrap(
+                  alignment: WrapAlignment.end,
+                  children: [
+                    Text(
+                      widget.subtitle,
+                      style: Theme.of(context).textTheme.bodySmall,
+                      textAlign: TextAlign.end,
+                    ),
+                    if (widget.icon != null)
+                      Icon(
+                        widget.icon,
+                        size: 25,
+                        color: AppColors.base,
+                      ),
+                  ],
+                ),
               ),
-              Icon(
-                widget.icon,
-                size: widget.icon == null ? 0 : 25,
-                color: AppColors.base,
-              )
             ],
-          )
+          ),
         ],
       ),
     );

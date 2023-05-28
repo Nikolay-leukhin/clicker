@@ -17,6 +17,6 @@ class BlessBloc extends Bloc<BlessEvent, BlessState> {
   void _increaseScore(event, emit) {
     userRepository.increaseRespect();
     userRepository.updateUserSuccess(userRepository.iq, userRepository.respectScore);
-    emit(ScoreIncreased());
+    emit(BlessScoreIncreased());
   }
 }

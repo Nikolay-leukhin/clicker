@@ -4,4 +4,4 @@ part of 'iq_bloc.dart';
 abstract class IqState {}
 
 class IqInitial extends IqState {}
-class ScoreIncreased extends IqState {}
+class IqScoreIncreased extends IqState {}

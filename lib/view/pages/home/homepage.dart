@@ -4,6 +4,7 @@ import 'package:clicker/view/utils/colors.dart';
 import 'package:flutter/material.dart';
 
 import 'bless_page.dart';
+import 'clicker_page.dart';
 import 'iq_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -16,8 +17,7 @@ class HomePage extends StatefulWidget {
 
 List<Widget?> pages = [
   ProfilePage(),
-  IqPage(),
-  BlessPage(),
+  ClickerPage(),
   ShopPage()
 ];
 
@@ -44,8 +44,7 @@ class _HomePageState extends State<HomePage> {
         unselectedItemColor: AppColors.earth,
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.person_pin), label: "Профиль"),
-          BottomNavigationBarItem(icon: Icon(Icons.school_outlined), label: "айку"),
-          BottomNavigationBarItem(icon: Icon(Icons.wb_incandescent), label: "молиться"),
+          BottomNavigationBarItem(icon: Icon(Icons.wb_incandescent), label: "кликать"),
           BottomNavigationBarItem(icon: Icon(Icons.shop), label: "шоп")
         ],
       ),

@@ -17,6 +17,6 @@ class IqBloc extends Bloc<IqEvent, IqState> {
   void _increaseIqScore(event, emit){
     userRepository.increaseIq();
     userRepository.updateUserSuccess(userRepository.iq, userRepository.respectScore);
-    emit(ScoreIncreased());
+    emit(IqScoreIncreased());
   }
 }

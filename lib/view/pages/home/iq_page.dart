@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:clicker/data/repository/user_repository.dart';
 import 'package:clicker/view/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,7 +20,6 @@ class _IqPageState extends State<IqPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("IQ TRAIN")),
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -40,12 +40,16 @@ class _IqPageState extends State<IqPage> {
                 child: BlocBuilder<IqBloc, IqState>(
                   bloc: context.read<IqBloc>(),
                   builder: (context, state) {
-                    return Text(context.read<IqBloc>().userRepository.iq.toString());
+                    return Text(context.read<UserRepository>().iq.toString());
                   },
                 ),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.1,
+                height:15,
+              ),
+              Text("+IQ/click : ${context.read<UserRepository>().respectIncrementSetter.toString()}", style: Theme.of(context).textTheme.headlineMedium,),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.05,
               ),
               GestureDetector(
                   onTap: () {
