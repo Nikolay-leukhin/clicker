@@ -47,7 +47,7 @@ class _BlessPageState extends State<BlessPage> {
             SizedBox(
               height:15,
             ),
-            Text("+IQ/click : ${context.read<UserRepository>().respectIncrementSetter.toString()}", style: Theme.of(context).textTheme.headlineMedium,),
+            Text("+Bless/click : ${context.read<UserRepository>().respectIncrementSetter.toString()}", style: Theme.of(context).textTheme.headlineMedium,),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.05,
             ),
@@ -61,7 +61,7 @@ class _BlessPageState extends State<BlessPage> {
                 child: Container(
                   alignment: Alignment.center,
                   width: MediaQuery.of(context).size.width * 0.86,
-                  height: MediaQuery.of(context).size.width * 0.77,
+                  height: MediaQuery.of(context).size.height * 0.44,
                   child: AnimatedContainer(
                     onEnd: () {
                       setState(() {
@@ -72,10 +72,10 @@ class _BlessPageState extends State<BlessPage> {
                     },
                     duration: Duration(milliseconds: 90),
                     width: _toogle ? MediaQuery.of(context).size.width * 0.8 : MediaQuery.of(context).size.width * 0.86,
-                    height: _toogle ? MediaQuery.of(context).size.width * 0.7 : MediaQuery.of(context).size.width * 0.77,
+                    height: _toogle ? MediaQuery.of(context).size.height * 0.4 : MediaQuery.of(context).size.height * 0.44,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        fit: BoxFit.fill,
+                        fit: BoxFit.contain,
                         image: AssetImage("assets/knees.png"),
                       ),
                     ),

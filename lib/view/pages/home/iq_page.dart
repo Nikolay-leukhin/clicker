@@ -61,7 +61,7 @@ class _IqPageState extends State<IqPage> {
                   child: Container(
                     alignment: Alignment.center,
                     width: MediaQuery.of(context).size.width * 0.86,
-                    height: MediaQuery.of(context).size.width * 0.77,
+                    height: MediaQuery.of(context).size.height * 0.44,
                     child: AnimatedContainer(
                       onEnd: () {
                         setState(() {
@@ -72,10 +72,10 @@ class _IqPageState extends State<IqPage> {
                       },
                       duration: Duration(milliseconds: 90),
                       width: _toogle ? MediaQuery.of(context).size.width * 0.8 : MediaQuery.of(context).size.width * 0.86,
-                      height: _toogle ? MediaQuery.of(context).size.width * 0.7 : MediaQuery.of(context).size.width * 0.77,
+                      height: _toogle ? MediaQuery.of(context).size.height * 0.4 : MediaQuery.of(context).size.width * 0.44,
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                          fit: BoxFit.fill,
+                          fit: BoxFit.contain,
                           image: AssetImage("assets/brains.png"),
                         ),
                       ),
